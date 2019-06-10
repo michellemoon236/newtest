@@ -3,5 +3,10 @@
 <ul>
 <%@categories.each do |category|%>
 <li><%=category.name%></li>
+  <ul>
+    <%category.dreams.each do |dream| %>
+      <li><%=dream.name%></li>
+  <%end%>
+  </ul><br>
 <%end%>
 </ul>

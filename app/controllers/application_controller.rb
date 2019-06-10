@@ -8,7 +8,20 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    @categories = User.find(2).categories.uniq
+    erb :home
+  end
+  
+  post '/categories' do 
+    #raise params.inspect 
+    dream = Dream.create(params["dream"])
+    #binding.pry
+    if !params["category"]["name"].empty?
+      dream.categories << Category.create(name: params["category"]["name"])
+    end
+    @categories = dream.categories
+    #binding.pry
+    erb :categories
   end
 
 end

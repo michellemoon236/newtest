@@ -1,0 +1,22 @@
+<h1>Dreams by Categories</h1>
+<form method="post" action="/categories">
+  <label for="title">Name:</label>
+  <input type="text" id="dream_name" name="dream[name]"><br>
+  <!--<label for="content">Content:</label>-->
+  <!--<input type="text" id="content" name="dream[content]"><br>  -->
+  
+  <label>Tag your dream journal entry with existing tag(s):</label><br>
+  <%@categories.each do |category|%>
+    <input type="checkbox" name="dream[category_ids][]" id="<%=category.id%>" value="<%=category.id%>"><%=category.name%></input>
+  <%end%>  <br>
+ 
+  <label>and/or, create a new category:</label><br>
+  <label>Category:</label>
+  <input type="text" name="category[name]" id="category_name"></input><br>
+  
+  <label>and/or, create a new category:</label><br>
+  <label>Category:</label>
+  <input type="text" name="category[name]" id="category_name"></input><br>
+  
+  <input type="submit" value="submit">
+</form>

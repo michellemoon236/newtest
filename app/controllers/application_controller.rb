@@ -16,9 +16,8 @@ class ApplicationController < Sinatra::Base
     #raise params.inspect 
     dream = Dream.create(params["dream"])
     #binding.pry
-    if !params["category"]["name"].empty?
-      dream.categories << Category.create(name: params["category"]["name"])
-    end
+    dream.categories << Category.create(name: params["category"]["name1"]) if !params["category"]["name1"].empty?
+    dream.categories << Category.create(name: params["category"]["name2"]) if !params["category"]["name2"].empty?
     @categories = dream.categories
     #binding.pry
     erb :categories
